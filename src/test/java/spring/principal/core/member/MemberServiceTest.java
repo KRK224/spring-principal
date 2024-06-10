@@ -1,11 +1,17 @@
 package spring.principal.core.member;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import spring.principal.core.AppConfig;
 import spring.principal.core.member.interfaces.MemberService;
 
 public class MemberServiceTest {
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
+    @BeforeEach
+    public void createMemberService() {
+        this.memberService = AppConfig.memberService();
+    }
     @Test
     void join() {
         //given
