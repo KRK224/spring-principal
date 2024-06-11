@@ -18,8 +18,9 @@ public class OrderServiceTest {
 
     @BeforeEach
     public void createServices() {
-        this.memberService = AppConfig.memberService();
-        this.orderService = AppConfig.orderService();
+        AppConfig appConfig = new AppConfig();
+        this.memberService = appConfig.memberService();
+        this.orderService = appConfig.orderService();
     }
 
     @Test

@@ -10,7 +10,8 @@ public class MemberServiceTest {
     MemberService memberService;
     @BeforeEach
     public void createMemberService() {
-        this.memberService = AppConfig.memberService();
+        AppConfig appConfig = new AppConfig();
+        this.memberService = appConfig.memberService();
     }
     @Test
     void join() {
