@@ -1,13 +1,14 @@
 package spring.principal.core.order;
 
-import spring.principal.core.discount.FixDiscountPolicy;
-import spring.principal.core.discount.RateDiscountPolicy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import spring.principal.core.discount.interfaces.DiscountPolicy;
 import spring.principal.core.member.Member;
-import spring.principal.core.member.MemoryMemberRepository;
 import spring.principal.core.member.interfaces.MemberRepository;
 import spring.principal.core.order.interfaces.OrderService;
 
+@Component
 public class OrderServiceImpl implements OrderService {
     
     private final MemberRepository memberRepository;
@@ -19,6 +20,7 @@ public class OrderServiceImpl implements OrderService {
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

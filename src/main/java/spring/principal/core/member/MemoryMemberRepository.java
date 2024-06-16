@@ -1,10 +1,12 @@
 package spring.principal.core.member;
 
-import java.util.HashMap;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.stereotype.Component;
 import spring.principal.core.member.interfaces.MemberRepository;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new ConcurrentHashMap<>();
     @Override
