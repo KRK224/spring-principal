@@ -18,6 +18,7 @@ import spring.principal.core.order.interfaces.OrderService;
 public class AppConfig {
     @Bean
     public MemberService memberService() {
+        System.out.println("AppConfig.memberService");
         // 생성자 주입
         return new MemberServiceImpl(memberRepository());
     }
@@ -25,16 +26,19 @@ public class AppConfig {
     @Bean
     // 메소드 명으로 역할을 알 수 있다. 그리고 메소드 내부만 변경하여 중복을 제거
     public MemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
     @Bean
     public DiscountPolicy discountPolicy() {
+        System.out.println("AppConfig.discountPolicy");
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }
