@@ -10,14 +10,13 @@ import spring.principal.core.order.interfaces.OrderService;
 
 @Component
 public class OrderServiceImpl implements OrderService {
-    
-    private final MemberRepository memberRepository;
     /**
      * MemberRepository가 추상 인터페이스 뿐만 아니라 구체 클래스에도 의존한다.
      * => 구체 클래스를 지워서 DIP를 지킨다? => null point exception 발생.
      */
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+    private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
     @Autowired
