@@ -2,6 +2,7 @@ package spring.principal.core.order;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spring.principal.core.discount.interfaces.DiscountPolicy;
 import spring.principal.core.member.Member;
@@ -9,7 +10,6 @@ import spring.principal.core.member.interfaces.MemberRepository;
 import spring.principal.core.order.interfaces.OrderService;
 
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     /**
@@ -40,6 +40,12 @@ public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
